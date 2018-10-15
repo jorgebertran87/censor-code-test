@@ -1,0 +1,15 @@
+.DS_Store
+.tags
+.tags_swap
+.git
+/vendor/
+/vendor/**/.git
+**/vendor/
+**/.project
+.project
+.metadata
+.idea
+*.cache
+.settings
+.buildpath
+.php_cs.cache
