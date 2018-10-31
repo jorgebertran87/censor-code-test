@@ -2,7 +2,7 @@
 
 namespace Censor;
 
-class LoopLessCensor extends AbstractCensor
+class LoopLessCensor implements CensorInterface
 {
     public function __invoke(array $censoredWords, string $text) : string
     {

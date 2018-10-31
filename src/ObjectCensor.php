@@ -2,7 +2,7 @@
 
 namespace Censor;
 
-class ObjectCensor extends AbstractCensor
+class ObjectCensor implements CensorInterface
 {
     public function __invoke(array $censoredWords, string $text) : string
     {
