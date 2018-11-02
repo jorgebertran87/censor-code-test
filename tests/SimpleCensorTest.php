@@ -3,28 +3,23 @@
 namespace Tests;
 
 use Censor\SimpleCensor;
-use PHPUnit\Framework\TestCase;
 
-class SimpleCensorTest extends TestCase
+class SimpleCensorTest extends CensorTest
 {
-    private $container;
-
-    public function setUp()
-    {
-        $this->container = new \DI\Container();
-    }
-
     /**
      * @test
      * @dataProvider \Tests\TextProvider::get
      */
-    public function doTest(
+    public function itReturnsValidCensoredText(
         array $censoredWords,
         string $text,
         string $validCensoredText
-    ) {
-        $censor = $this->container->get(SimpleCensor::class);
-        $censoredText = $censor->__invoke($censoredWords, $text);
-        $this->assertEquals($censoredText, $validCensoredText);
+    ): void {
+        parent::doTest(
+            $censoredWords,
+            $text,
+            $validCensoredText,
+            SimpleCensor::class
+        );
     }
 }

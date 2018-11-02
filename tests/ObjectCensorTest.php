@@ -3,28 +3,23 @@
 namespace Tests;
 
 use Censor\ObjectCensor;
-use PHPUnit\Framework\TestCase;
 
-class ObjectCensorTest extends TestCase
+class ObjectCensorTest extends CensorTest
 {
-    private $container;
-
-    public function setUp()
-    {
-        $this->container = new \DI\Container();
-    }
-
     /**
      * @test
      * @dataProvider \Tests\TextProvider::get
      */
-    public function doTest(
+    public function itReturnsValidCensoredText(
         array $censoredWords,
         string $text,
         string $validCensoredText
-    ) {
-        $censor = $this->container->get(ObjectCensor::class);
-        $censoredText = $censor->__invoke($censoredWords, $text);
-        $this->assertEquals($censoredText, $validCensoredText);
+    ): void {
+        parent::doTest(
+            $censoredWords,
+            $text,
+            $validCensoredText,
+            ObjectCensor::class
+        );
     }
 }
